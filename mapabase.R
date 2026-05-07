@@ -34,14 +34,15 @@ mapa_region <- ggplot() +
 
 mapa_region
 
-# Mapa Parque
-area_parque <- st_read("parque-nonguen.shp")
+# Mapa Parque área bebedero
+# area_parque <- st_read("parque-nonguen.shp")
 bebederos <- st_read("bebederos-shp.shp")
+area_bebederos <- st_read("area_parque_bebederos.shp")
 
 mapa_parque <- ggplot() +
   annotation_map_tile(type = "osm", zoomin = 0) +
-  geom_sf(data = area_parque, fill = NA, color = "red", size = 0.8) +
-  geom_sf(data = bebederos, color = "darkgreen", size = 2, alpha = 0.7) +
+  geom_sf(data = area_bebederos, fill = NA, color = "transparent", size = 0) +
+  geom_sf(data = bebederos, color = "orange", size = 2, alpha = 0.7) +
   annotation_scale(location = "bl", width_hint = 0.3) +
   annotation_north_arrow(location = "tl",
                          style = north_arrow_fancy_orienteering) +
@@ -52,8 +53,3 @@ mapa_parque <- ggplot() +
   theme(plot.title = element_text(hjust = 0.5, face = "bold"))
 
 mapa_parque
-
-
-
-
-        
